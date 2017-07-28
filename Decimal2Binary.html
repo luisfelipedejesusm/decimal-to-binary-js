@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="number" id="number" onkeyup="getReceta(this.value)">
+<p id="binary"></p>
+<p id="result"></p>
+<script type="text/javascript">
+	function getReceta(number){
+		if (number > 255 || number <0) {alert("debe ser menor de 255 y mayor a 0"); return false;}
+		document.getElementById("result").innerHTML = 'calculando...';
+		document.getElementById("binary").innerHTML = 'calculando...';
+		var secuencia = [1, 2, 4, 8, 16, 32, 64,128];
+		var binaryForm =parseInt(number, 10).toString(2);
+		binaryForm = binaryForm.split("").reverse().join("");
+		var binaryArray = binaryForm.split("");
+		var result = "0";
+		for (var i = 0; i < binaryArray.length; i++) {
+			if (binaryArray[i] == "1") {
+				result = result + " + " + secuencia[i];
+			}
+		}
+		document.getElementById("binary").innerHTML = 'Binario : ' + binaryForm;		
+		document.getElementById("result").innerHTML = result;
+	}
+</script>
+</body>
+</html>
